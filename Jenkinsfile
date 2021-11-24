@@ -21,6 +21,15 @@ pipeline{
             }
         }
 
+        stage('Deploy') {
+            steps {
+                sh '''
+                    oc project rqerwd-greetings
+                    oc start-build greeting-service --follow --wait
+                '''
+            }
+        }
+
         // Add the "Deploy" stage here
     }
 }
